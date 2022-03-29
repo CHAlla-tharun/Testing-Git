@@ -1,0 +1,71 @@
+<template>
+    <lightning-card >
+        <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
+        <lightning-layout-item padding="around-small" size="12" medium-device-size="6" large-device-size="6">    
+        <h1>Information</h1><br>
+        <lightning-input label="Listing Name" type="text" value={ListingName} onchange={handlechange} required></lightning-input>
+        <lightning-combobox required label="Category"
+                                    name="Category"
+                                    options={typecategory}
+                                    onchange={handlechange}></lightning-combobox>
+        <lightning-combobox required label="Duration"
+                                    name="Duration"
+                                    options={typeduration}
+                                    onchange={handlechange}></lightning-combobox>
+        <lightning-input label="Street"  value={Street} onchange={handlechange}></lightning-input>
+        <lightning-input label="City"   value={City} onchange={handlechange} required></lightning-input>
+        <lightning-combobox required label="State"
+                                    name="State"
+                                    options={typestate}
+                                    onchange={handlechange}></lightning-combobox>
+        <lightning-input label="Zip/Postal Code"  value={PostalCode} onchanage={handlechange} required></lightning-input>
+        <lightning-input label="Country" value={Country} onchange={handlechange} required></lightning-input>
+        </lightning-layout-item>      
+        <lightning-layout-item padding="around-small" size="12" medium-device-size="6" large-device-size="6">  
+            <h1></h1><br>
+            <h1></h1><br>
+            <lightning-combobox required label="Status"
+                                        name="Status"
+                                        options={typestatus}
+                                        onchange={handlechange}></lightning-combobox>
+        <lightning-input label = "Base Price"  value={BasePrice} onchange={handlechange} required></lightning-input>
+        <lightning-input label = "Number of Days"  value={NumberOfDays} onchange={handlechange} ></lightning-input>
+        <lightning-input label = "Price Per Person"  value={PricePerPerson} onchange={handlechange} required></lightning-input>
+        <lightning-input label = "Guest Min Capacity"  value={GuestMinCapacity} onchange={handlechange} required></lightning-input>
+        <lightning-input label = "Guest Max Capacity"  value={GuestMaxCapacity} onchange={handlechange} ></lightning-input>
+        <lightning-input label = "Items to Bring"  value={ItemsToBring} onchange={handlechange} ></lightning-input>
+        <lightning-input label = "Pick Up Location"  value={PickUpLocation} onchange={handlechange} ></lightning-input>
+        </lightning-layout-item>
+        <br/>  <br/>
+        <div class="slds-text-align--center slds-m-top--medium" style="text-align:center; width:40px; margin:auto;">
+            <lightning-button type="brand" label="Submit" variant="brand" size="small" onclick={submitAction}></lightning-button>
+        </div>
+        <div class="slds-text-align--center slds-m-top--medium" style="text-align:center; width:40px; margin:auto;">
+            <lightning-button type="brand" label="Reset" variant="brand" size="small" onclick={resetAction}></lightning-button>
+        </div>
+    </div>
+    </lightning-card>
+    <lightning-card>
+        <lightning-accordion-section name="B" label="Fill Out"></lightning-accordion-section>
+        <!-- <h1><lightning-combobox name = "Fill Out" ></lightning-combobox></h1><br/> -->
+        <lightning-input-rich-text label="Description"
+                                    label-visible  
+                                    required
+                                    value={Description}>
+        </lightning-input-rich-text>
+        <lightning-input-rich-text label="What's Included"
+                                label-visible
+                                required
+                                value={included}>
+        </lightning-input-rich-text>
+        <lightning-input-rich-text label="Other Considerations"
+                                label-visible
+                                required
+                                value={considerations}>
+        </lightning-input-rich-text>
+        <lightning-accordion-section name="c" label="Attachment"></lightning-accordion-section>
+        <lightning-input type="file" onchange={onFileUpload} required name="uploadFile" label="Upload File">  
+        </lightning-input>  
+
+</lightning-card>
+</template>

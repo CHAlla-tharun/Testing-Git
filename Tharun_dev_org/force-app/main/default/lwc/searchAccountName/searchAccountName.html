@@ -1,0 +1,16 @@
+<template>
+    <lightning-card>
+        
+        <lightning-input  type="search" class="slds-m-bottom_small" label="Search Account Name" onchange={searchAccountAction} value={accountName}></lightning-input>
+         
+           <template for:each={accountList} for:item="accObj" for:index="index">  
+           
+            <tr class="slds-hint-parent" key={accObj.Id}>
+               <td>{accObj.Name}</td>
+               </tr>
+               <div data-id={accObj.recId} key={accObj.Id} data-name={accObj.recName} onclick={setSelectedRecord} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option"></div>                  
+               
+            </template>
+              
+    </lightning-card>
+</template>

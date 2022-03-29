@@ -1,0 +1,48 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-around_medium">
+            <div class="slds-m-bottom_small">
+                <lightning-input type="text" label="Your Trip Location" value={searchValue} placeholder="ex:Hyd.etc"
+                    onchange={handleSearch}>
+                </lightning-input>
+                
+                <template if:true={tharu}>
+                    <template for:each={tharu} for:item="th">
+                        <div key={th.Id}>
+                            <lightning-layout multiple-rows>
+                                <lightning-layout-item>
+                                    <div class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_1-of-12">
+                                        <lightning-carousel auto-scroll = "3" if:true={th.url}>
+                                            <template for:each={th.url} for:item="link">
+                                                <lightning-carousel-image key ={th.Id} src ={link}
+                                                    style="width:350px; height:150px;" alternative-text={th.Name}><br/>
+                                                </lightning-carousel-image>
+                                            </template> <br/>
+                                        </lightning-carousel>    
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item>
+                                    <div class="slds-col slds-large-size_6-of-12 slds-medium-size_6-of-12 slds-size_1-of-12">
+                                        <p>{th.Name}<br/>
+                                            {th.Category}<br/>
+                                            {th.BasePrice}<br/>
+                                            {th.Duration}<br/>
+                                            {th.state}<br/>
+                                        </p>                   
+                                     </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </div>
+                    </template>
+                </template>  
+            </div>
+        </div>
+        <div class="slds-m-around_medium">
+            <p class="slds-m-vertical_medium content">
+                     Displaying {startingRecord} to {endingRecord} of {totalRecountCount} records.
+                     Page {page} of {totalPage}. </p>
+            <c-paginator onprevious={previousHandler} onnext={nextHandler}></c-paginator>
+        </div>
+        <lightning-button variant="brand" label="Go" onclick={submitDetails}></lightning-button>
+    </lightning-card>
+</template>
